@@ -5,7 +5,10 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: {
+				name: string;
 				email: string;
+				avatar: string;
+				has_setup_payment: boolean;
 			};
 		}
 		// interface PageData {}
