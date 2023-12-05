@@ -25,7 +25,7 @@ const login: Action = async ({ cookies, request }) => {
 	});
 
 	// redirect the user
-	throw redirect(302, '/admin/dashboard');
+	throw redirect(302, '/me/dashboard');
 };
 
 export const actions: Actions = { login };
