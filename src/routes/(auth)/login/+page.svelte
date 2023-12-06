@@ -12,27 +12,23 @@
 </script>
 
 <div
-	class="flex flex-col justify-center md:max-w-sm max-w-full h-full variant-glass-surface p-4 space-y-8"
+	class="flex flex-col justify-center md:max-w-sm max-w-full h-full dark:variant-glass-surface p-4 space-y-8"
 >
 	<h2 class="h2 font-thin">Log in to your account</h2>
-	<p class="font-bold">Don't have an account? <a href="/register" class="anchor">Sign up</a></p>
+	<p class="font-bold">
+		Don't have an account? <a href="/register" class="anchor">Create an account</a>
+	</p>
 	<div class="flex flex-col space-y-4">
 		<a
-			class="block card card-hover p-4 variant-ghost-surface flex items-center justify-center space-x-2"
+			class="block card card-hover p-4 dark:variant-ghost-surface flex items-center justify-center space-x-2"
 			href={github_url}
 		>
 			<span>GitHub</span>
 		</a>
-		<a
-			class="block card card-hover p-4 variant-ghost-surface flex items-center justify-center space-x-2"
-			href="/"
-		>
-			<span>Google</span>
-		</a>
 	</div>
 	<div class="inline-flex items-center justify-between w-full">
 		<hr class="w-12" />
-		<span class="px-3 text-gray-400">Or with email and password</span>
+		<span class="px-3 text-gray-500 dark:text-gray-400">Or with email and password</span>
 		<hr class="w-12" />
 	</div>
 	<form
@@ -43,7 +39,7 @@
 		class="flex flex-col space-y-4"
 	>
 		<label class="label">
-			<span>Email</span>
+			<span>Your email</span>
 			<input
 				class="input"
 				title="Input (email)"
@@ -51,9 +47,10 @@
 				placeholder="example@email.com"
 				name="email"
 			/>
+			<p>&nbsp;</p>
 		</label>
 		<label class="label">
-			<span>Password</span>
+			<span>Your password</span>
 			<input
 				class="input"
 				title="Input (password)"
@@ -61,12 +58,8 @@
 				placeholder="password"
 				name="password"
 			/>
-		</label>
-		<button class="btn variant-filled-primary" type="submit">Sign In</button>
-		{#if form?.invalid}
-			<p class="text-error-400">Both email and password are required.</p>
-		{:else}
 			<p>&nbsp;</p>
-		{/if}
+		</label>
+		<button class="btn bg-primary-500" type="submit">Login</button>
 	</form>
 </div>

@@ -24,9 +24,9 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center max-w-sm h-full variant-glass-surface p-4 space-y-8">
+<div class="flex flex-col justify-center max-w-sm h-full dark:variant-glass-surface p-4 space-y-8">
 	<h2 class="h2 font-thin">Create a new account</h2>
-	<p class="font-bold">Already have an account? <a href="/login" class="anchor">Sign In</a></p>
+	<p class="font-bold">Already have an account? <a href="/login" class="anchor">Login here</a></p>
 	<form
 		use:focusTrap={isFocused}
 		action="?/register"
@@ -35,7 +35,7 @@
 		use:enhance
 	>
 		<label class="label">
-			<span>Username</span>
+			<span>What should we call you?</span>
 			<input
 				class="input"
 				title="Input (text)"
@@ -46,7 +46,7 @@
 			<p class="text-error-400">&nbsp;{usernameError}</p>
 		</label>
 		<label class="label">
-			<span>Email Address</span>
+			<span>Your email</span>
 			<input
 				class="input"
 				title="Input (email)"
@@ -58,7 +58,7 @@
 			<p class="text-error-400">&nbsp;{emailError}</p>
 		</label>
 		<label class="label">
-			<span>Password</span>
+			<span>Your password</span>
 			<input
 				class="input"
 				title="Input (password)"
@@ -68,6 +68,13 @@
 			/>
 			<p class="text-error-400">&nbsp;{passwordError}</p>
 		</label>
-		<button class="btn variant-filled-primary" type="submit">Create Account</button>
+		<button class="btn bg-primary-500" aria-describedby="helper-text-explanation" type="submit"
+			>Create an account</button
+		>
+		<p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+			We do not share your details. Read our <a href="/privacy-policy" class="font-medium anchor"
+				>Privacy Policy</a
+			>.
+		</p>
 	</form>
 </div>
