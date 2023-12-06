@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { AppShell } from '@skeletonlabs/skeleton';
-	import { Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import { Drawer, getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
+	import UserDropdown from '$lib/components/UserDropdown.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	const drawerStore = getDrawerStore();
 
@@ -13,35 +15,59 @@
 
 <!-- The drawer overlays the page when active -->
 <Drawer class="z-2">
-	<Navigation />
+	<Navigation listLayout="p-4" />
 </Drawer>
 
 <AppShell
-	regionPage="relative"
-	slotSidebarLeft="bg-surface-500/5 w-0 lg:w-48 border border-transparent  border-r-surface-800"
-	slotPageHeader="lg:hidden sticky top-0 z-10 bg-surface-500/5 drop-shadow-md p-2"
+	slotPageFooter="dark:bg-surface-900 bg-surface-100 border-t dark:border-surface-800 border-surface-200 "
 >
-	<svelte:fragment slot="pageHeader"
-		><div class="flex items-center justify-between">
-			<button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
-				<span>
-					<svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
-						<rect width="100" height="20" />
-						<rect y="30" width="100" height="20" />
-						<rect y="60" width="100" height="20" />
-					</svg>
-				</span>
-			</button>
-			{#if !$page.data.user}
-				<div>
-					<a class="btn variant-filled" href="/login">Sign in</a>
-					<a class="btn variant-filled-primary" href="/register">Sign up</a>
+	<svelte:fragment slot="header">
+		<AppBar
+			background="dark:bg-surface-800 bg-surface-100"
+			slotDefault="place-self-start"
+			slotLead="place-content-start"
+			slotTrail="place-content-end"
+			padding="p-2 px-4"
+			shadow="drop-shadow-lg"
+		>
+			<svelte:fragment slot="lead">
+				<button
+					class="md:hidden mr-2 w-8 h-8 rounded-full focus:ring-4 focus:ring-surface-300 dark:focus:ring-surface-600 relative inline-block"
+					on:click={drawerOpen}
+				>
+					<span>
+						<svg viewBox="0 0 100 80" class="fill-token w-8 h-4">
+							<rect width="100" height="12" />
+							<rect y="30" width="75" height="12" />
+							<rect y="60" width="100" height="12" />
+						</svg>
+					</span>
+				</button>
+				<a class="btn btn-sm font-extrabold text-xl" href="/me/dashboard">skoi.</a>
+			</svelte:fragment>
+			<svelte:fragment slot="trail">
+				<div class="hidden md:flex items-center space-x-2">
+					<Navigation listLayout="flex items-center" />
+					<LightSwitch />
 				</div>
-			{/if}
-		</div></svelte:fragment
-	>
-	<slot />
-	<svelte:fragment slot="sidebarLeft">
-		<Navigation />
+				{#if !$page.data.user}
+					<div class="space-x-2">
+						<a class="btn btn-sm" href="/login">Sign In</a>
+						<a
+							class="btn btn-sm text-white bg-gradient-to-br variant-gradient-secondary-primary"
+							href="/register">Create Account</a
+						>
+					</div>
+				{:else}
+					<UserDropdown />
+				{/if}
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<div class="mx-auto max-w-4xl p-4 md:p-8">
+		<slot />
+	</div>
+	<svelte:fragment slot="pageFooter">
+		<Footer />
 	</svelte:fragment>
 </AppShell>
