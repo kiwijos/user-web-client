@@ -7,8 +7,8 @@
 			title: 'Åkare',
 			subpaths: [
 				{ name: 'Kom igång', path: '#' },
-				{ name: 'Skaffa appen', path: '#' },
-				{ name: 'Vanliga frågor', path: '#' },
+				{ name: 'Mobilappen', path: '#' },
+				{ name: 'FAQ', path: '#' },
 				{ name: 'Priser', path: '#' }
 			]
 		},
@@ -42,9 +42,9 @@
 </script>
 
 <div class="divide-y divide-surface-200 bg-surface-100 dark:bg-surface-900 dark:divide-gray-600">
-	<nav class="mx-auto max-w-4xl p-4 md:p-8 flex space-x-16">
+	<nav class="mx-auto max-w-4xl p-4 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4">
 		{#each paths as { title, subpaths }}
-			<ul class="list-none flex flex-col">
+			<ul class="list-none flex flex-col col-span-1">
 				<li class="py-2">
 					<span class="h3 font-bold uppercase dark:text-gray-200">{title}</span>
 				</li>
