@@ -5,10 +5,10 @@
 	export let listLayout: string = '';
 
 	const paths = [
-		{ name: 'Dashboard', path: '/me/dashboard' },
-		{ name: 'Account', path: '/me/account' },
-		{ name: 'Safety', path: '/me/safety' },
-		{ name: 'Parking', path: '/me/parking' }
+		{ name: 'Hem', path: '/me/dashboard' },
+		{ name: 'Konto', path: '/me/account' },
+		{ name: 'Säkerhet', path: '/me/safety' },
+		{ name: 'Parkering', path: '/me/parking' }
 	];
 
 	const drawerStore = getDrawerStore();
@@ -32,9 +32,9 @@
 	<li>
 		<a
 			href="/faq"
-			class="btn btn-sm text-white bg-gradient-to-br variant-gradient-tertiary-primary"
+			class="btn btn-sm text-white dark:text-primary-100 bg-gradient-to-br variant-gradient-tertiary-primary dark:from-tertiary-700 dark:to-primary-700"
 		>
-			Pricing &amp; FAQ ✨
+			Priser &amp; FAQ ✨
 		</a>
 	</li>
 </ul>

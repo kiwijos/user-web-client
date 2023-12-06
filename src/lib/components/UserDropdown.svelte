@@ -11,13 +11,13 @@
 	};
 
 	const accountLinks = [
-		{ name: 'Settings', path: '/me/account/settings' },
+		{ name: 'Inställningar', path: '/me/account/settings' },
 		{
-			name: 'Payment',
+			name: 'Betalning',
 			path: '/me/account/settings/payment'
 		},
-		{ name: 'Transactions', path: '/me/account/transactions' },
-		{ name: 'Trips', path: '/me/account/trips' }
+		{ name: 'Transaktioner', path: '/me/account/transactions' },
+		{ name: 'Resehistorik', path: '/me/account/trips' }
 	];
 </script>
 
@@ -60,7 +60,7 @@
 				type="submit"
 				class="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
 			>
-				Logout
+				Logga ut
 			</button>
 		</form>
 	</div>
