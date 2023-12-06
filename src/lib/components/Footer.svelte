@@ -60,7 +60,9 @@
 		{/each}
 	</nav>
 	<div>
-		<ul class="mx-auto max-w-4xl p-4 md:p-8 flex justify-between items-end">
+		<ul
+			class="mx-auto max-w-4xl p-4 md:p-8 flex flex-col md:flex-row justify-between items-end space-y-4 md:space-y-0"
+		>
 			<li>
 				<a
 					href="#"
