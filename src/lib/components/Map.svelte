@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Map, AttributionControl } from 'maplibre-gl';
+	import { Map } from 'maplibre-gl';
 	import { PUBLIC_MAPTILER_API_KEY } from '$env/static/public';
 	import { mapStore } from '$lib/stores/map';
 
