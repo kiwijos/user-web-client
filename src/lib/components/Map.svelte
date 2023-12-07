@@ -5,23 +5,26 @@
 
 	let mapContainer: HTMLDivElement;
 
+	export let width = 'w-full';
+	export let height = 'h-full';
+
 	$: if (mapContainer) {
 		const initialState = { lat: 62.0, lng: 15.0, zoom: 4 };
 
 		const map: Map = new Map({
 			container: mapContainer,
-			style: `https://api.maptiler.com/maps/basic-v2/style.json?key=${PUBLIC_MAPTILER_API_KEY}`,
+			style: `https://api.maptiler.com/maps/dataviz/style.json?key=${PUBLIC_MAPTILER_API_KEY}`,
 			center: [initialState.lng, initialState.lat],
 			zoom: initialState.zoom,
-			attributionControl: false
+			attributionControl: true
 		});
-		map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+		// map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
 		mapStore.set(map);
 	}
 </script>
 
-<div class="map-wrap">
+<div class="relative {width} {height}">
 	<a href="https://www.maptiler.com" class="watermark"
 		><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo" /></a
 	>
@@ -31,11 +34,11 @@
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-	.map-wrap {
+	/* .map-wrap {
 		position: relative;
 		width: 100%;
-		height: 100%;
-	}
+		height: 300px;
+	} */
 
 	.map {
 		position: absolute;
