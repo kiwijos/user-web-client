@@ -1,15 +1,10 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
+	// import type { ActionData } from './$types';
 	import { enhance } from '$app/forms';
 	import { focusTrap } from '@skeletonlabs/skeleton';
 	import { PUBLIC_GITHUB_ID } from '$env/static/public';
-	// import githubLogo from '$lib/assets/icons/github-mark.svg';
-	// import githubLogoWhite from '$lib/assets/icons/github-mark-white.svg';
-	import GithubMark from '$lib/components/GithubMark.svelte';
-	// export let form: ActionData;
-
-	// pick the logo based on the theme
-	// let logo = window.document.body.classList.contains('dark-mode') ? githubLogoWhite : githubLogo;
+	import Fa from 'svelte-fa';
+	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 	let isFocused: boolean = true;
 
@@ -28,7 +23,7 @@
 			class="block card card-hover p-4 border border-surface-700 flex items-center justify-center space-x-2"
 			href={github_url}
 		>
-			<GithubMark />
+			<Fa icon={faGithub} size="lg" />
 			<span>Logga in med GitHub</span>
 		</a>
 	</div>
@@ -48,7 +43,7 @@
 			<span>Din mail</span>
 			<input
 				class="input"
-				title="Input (email)"
+				title="Input (mail)"
 				type="email"
 				placeholder="exempel@email.com"
 				name="email"
@@ -59,7 +54,7 @@
 			<span>Ditt lösenord</span>
 			<input
 				class="input"
-				title="Input (password)"
+				title="Input (lösenord)"
 				type="password"
 				placeholder="lösenord"
 				name="password"
