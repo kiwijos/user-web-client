@@ -7,8 +7,8 @@
 	const paths = [
 		{ name: 'Hem', path: '/me/dashboard' },
 		{ name: 'Konto', path: '/me/account' },
-		{ name: 'Säkerhet', path: '/me/safety' },
-		{ name: 'Parkering', path: '/me/parking' }
+		{ name: 'Säkerhet', path: '/blog/safety' },
+		{ name: 'Parkering', path: '/blog/parking' }
 	];
 
 	const drawerStore = getDrawerStore();
@@ -29,12 +29,4 @@
 			>
 		</li>
 	{/each}
-	<li>
-		<a
-			href="/faq"
-			class="btn btn-sm text-white dark:text-primary-100 bg-gradient-to-br variant-gradient-tertiary-primary dark:from-tertiary-700 dark:to-primary-700"
-		>
-			Priser &amp; FAQ ✨
-		</a>
-	</li>
 </ul>
