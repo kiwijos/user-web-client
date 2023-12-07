@@ -4,7 +4,7 @@
 
 {#if $page.data.user.has_setup_payment === false}
 	<a
-		href="/me/account/settings/payment"
+		href="/me/account/payment"
 		class="block card card-hover p-4 space-y-4 text-white dark:text-primary-100 bg-gradient-to-br variant-gradient-tertiary-primary dark:from-tertiary-800 dark:to-primary-800"
 	>
 		<h2 class="h2 font-bold">Lås upp ditt första åk! 💫</h2>
