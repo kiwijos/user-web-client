@@ -15,7 +15,7 @@
 </script>
 
 <!-- The drawer overlays the page when active -->
-<Drawer class="z-2">
+<Drawer width="w-3/4 md:w-96">
 	<Navigation listLayout="p-4" />
 </Drawer>
 
