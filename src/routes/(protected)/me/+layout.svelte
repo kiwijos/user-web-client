@@ -5,6 +5,7 @@
 	import UserDropdown from '$lib/components/UserDropdown.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { brand } from '$lib/config';
 
 	const drawerStore = getDrawerStore();
 
@@ -43,7 +44,10 @@
 						</svg>
 					</span>
 				</button>
-				<a class="btn btn-sm font-extrabold text-xl" href="/me/dashboard">skoi.</a>
+				<a
+					class="btn btn-sm font-extrabold text-xl underline decoration-primary-400 dark:decoration-primary-800 decoration-4"
+					href="/me/dashboard">{brand}</a
+				>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<div class="hidden md:flex items-center space-x-2">
