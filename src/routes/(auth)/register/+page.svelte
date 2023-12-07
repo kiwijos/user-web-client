@@ -24,7 +24,9 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center max-w-sm h-full dark:variant-glass-surface p-4 space-y-8">
+<div
+	class="flex flex-col justify-center max-w-sm h-full bg-surface-100 dark:variant-glass-surface p-4 space-y-8"
+>
 	<h2 class="h2 font-thin">Skapa ett nytt konto</h2>
 	<p class="font-bold">Har du redan ett konto? <a href="/login" class="anchor">Logga in här</a></p>
 	<form
@@ -38,7 +40,7 @@
 			<span>Vad ska vi kalla dig?</span>
 			<input
 				class="input"
-				title="Input (text)"
+				title="Input (användarnamn)"
 				type="text"
 				placeholder="username"
 				name="username"
@@ -49,7 +51,7 @@
 			<span>Din mail</span>
 			<input
 				class="input"
-				title="Input (email)"
+				title="Input (mail)"
 				type="email"
 				placeholder="exempel@email.com"
 				autocomplete="email"
@@ -61,7 +63,7 @@
 			<span>Ditt lösenord</span>
 			<input
 				class="input"
-				title="Input (password)"
+				title="Input (lösenord)"
 				type="password"
 				placeholder="lösenord"
 				name="password"
@@ -74,7 +76,7 @@
 			type="submit">Skapa konto</button
 		>
 		<p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-			Vi delar inte din data. Läs vår <a href="/privacy-policy" class="font-medium anchor"
+			Vi delar inte din data. Läs vår <a href="/blog/privacy-policy" class="font-medium anchor"
 				>Integritetspolicy</a
 			>.
 		</p>
