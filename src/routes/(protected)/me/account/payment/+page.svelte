@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-
+	import type { ActionData } from './$types';
 	import Fa from 'svelte-fa';
 	import { faCcMastercard, faCcVisa, faCcAmex } from '@fortawesome/free-brands-svg-icons';
+
+	export let form: ActionData;
 
 	const cardOptions = [
 		{ name: 'Mastercard', value: '1', checked: true, icon: faCcMastercard, color: '' },
@@ -11,6 +13,18 @@
 	];
 
 	const countryOptions = [{ name: 'Sverige', value: '1' }];
+
+	let cardTypeError: string = '';
+	let cardNumberError: string = '';
+
+	$: if (form?.errors) {
+		cardTypeError =
+			form.errors.find((error: { field: string; message: string }) => error.field === 'cardType')
+				?.message ?? '';
+		cardNumberError =
+			form.errors.find((error: { field: string; message: string }) => error.field === 'cardNumber')
+				?.message ?? '';
+	}
 </script>
 
 <form
@@ -26,7 +40,7 @@
 					class="radio"
 					type="radio"
 					checked={card.checked}
-					name="cardName"
+					name="cardType"
 					value={card.value}
 				/>
 				<span class="text-surface-700 dark:text-surface-300"><Fa icon={card.icon} size="lg" /></span
@@ -34,8 +48,7 @@
 				<p>{card.name}</p>
 			</label>
 		{/each}
-
-		<p>&nbsp;</p>
+		<p class="text-error-400">&nbsp;{cardTypeError}</p>
 	</div>
 	<label class="label">
 		<span>Ange dina kortuppgifter</span>
@@ -62,7 +75,7 @@
 				disabled
 			/>
 		</div>
-		<p>&nbsp;</p>
+		<p class="text-error-400">&nbsp;{cardNumberError}</p>
 	</label>
 	<label class="label">
 		<span>Faktureringsadress</span>
