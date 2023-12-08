@@ -13,7 +13,12 @@
 	const countryOptions = [{ name: 'Sverige', value: '1' }];
 </script>
 
-<form action="?/payment" method="POST" use:enhance class="flex flex-col space-y-4 max-w-xl">
+<form
+	action="?/updatePaymentMethod"
+	method="POST"
+	use:enhance
+	class="flex flex-col space-y-4 max-w-xl"
+>
 	<div class="space-y-2">
 		{#each cardOptions as card}
 			<label class="flex items-center space-x-2">
@@ -21,7 +26,7 @@
 					class="radio"
 					type="radio"
 					checked={card.checked}
-					name="radio-direct"
+					name="cardName"
 					value={card.value}
 				/>
 				<span class="text-surface-700 dark:text-surface-300"><Fa icon={card.icon} size="lg" /></span
@@ -37,8 +42,9 @@
 		<div class="grid rounded-lg grid-rows-2 grid-cols-2">
 			<input
 				title="Kortnummer"
-				class="input border-b-transparent !rounded-b-none rounded-t-md col-span-2"
+				class="input !rounded-b-none rounded-t-md col-span-2"
 				type="number"
+				name="cardNumber"
 				placeholder="Kortnummer"
 			/>
 			<input
@@ -46,12 +52,14 @@
 				class="input border-r-transparent !rounded-t-none !rounded-br-none rounded-bl-md col-span-1"
 				type="number"
 				placeholder="MM / ÅÅ"
+				disabled
 			/>
 			<input
 				title="CVC"
 				class="input !rounded-t-none !rounded-bl-none rounded-br-md col-span-1"
 				type="number"
 				placeholder="CVC"
+				disabled
 			/>
 		</div>
 		<p>&nbsp;</p>
@@ -63,7 +71,7 @@
 				title="Land"
 				class="select border-b-transparent !rounded-b-none rounded-t-md col-span-1"
 				value="1"
-				name="country"
+				disabled
 			>
 				{#each countryOptions as option}
 					<option value={option.value}>{option.name}</option>
@@ -74,6 +82,7 @@
 				class="input !rounded-t-none !rounded-t-none rounded-b-md col-span-1"
 				type="number"
 				placeholder="Postnummer"
+				disabled
 			/>
 		</div>
 		<p>&nbsp;</p>
