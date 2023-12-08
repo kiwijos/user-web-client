@@ -81,7 +81,7 @@
 			</li>
 			<li>
 				<span class="font-md text-sm block truncate text-gray-500 dark:text-gray-400">
-					Sidan är designad av {owner} &copy {new Date().getFullYear()}</span
+					Sidan är designad av {owner} &copy 2023</span
 				>
 			</li>
 		</ul>
