@@ -48,7 +48,7 @@
 				placeholder="exempel@email.com"
 				name="email"
 			/>
-			<p>&nbsp;</p>
+			<p class="text-error-400 text-xs">&nbsp;</p>
 		</label>
 		<label class="label">
 			<span>Ditt lösenord</span>
@@ -59,7 +59,7 @@
 				placeholder="lösenord"
 				name="password"
 			/>
-			<p>&nbsp;</p>
+			<p class="text-error-400 text-xs">&nbsp;</p>
 		</label>
 		<button class="btn bg-primary-500 text-white" type="submit">Logga in</button>
 	</form>
