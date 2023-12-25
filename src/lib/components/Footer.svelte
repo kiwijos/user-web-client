@@ -42,17 +42,17 @@
 	];
 </script>
 
-<div class="divide-y divide-surface-200 bg-surface-100 dark:bg-surface-900 dark:divide-gray-600">
+<div class="divide-y divide-surface-200 bg-surface-100 dark:bg-surface-900 dark:divide-surface-800">
 	<nav class="mx-auto max-w-4xl py-20 px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-4">
 		{#each paths as { title, subpaths }}
 			<ul class="list-none flex flex-col col-span-1">
 				<li class="py-2">
-					<span class="h3 font-bold uppercase dark:text-gray-200">{title}</span>
+					<span class="h3 font-bold uppercase dark:text-surface-300">{title}</span>
 				</li>
 				{#each subpaths as { name, path }}
 					<li>
 						<a
-							class="block py-1 text-md text-gray-700 dark:text-gray-300 dark:hover:text-white"
+							class="block py-1 text-md text-gray-700 hover:text-gray-900 dark:text-surface-400 dark:hover:text-white"
 							href={path}>{name}</a
 						>
 					</li>
