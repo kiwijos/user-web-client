@@ -3,22 +3,13 @@
 	import { enhance } from '$app/forms';
 	import { popup, Avatar } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import { accountLinks } from '$lib/utils/links';
 
 	const popupClick: PopupSettings = {
 		event: 'click',
 		target: 'popupClick',
 		placement: 'bottom'
 	};
-
-	const accountLinks = [
-		{ name: 'Inställningar', path: '/me/account/settings' },
-		{
-			name: 'Kortuppgifter',
-			path: '/me/account/payment'
-		},
-		{ name: 'Transaktioner', path: '/me/account/transactions' },
-		{ name: 'Resehistorik', path: '/me/account/trips' }
-	];
 </script>
 
 <button
@@ -36,7 +27,7 @@
 </button>
 <div data-popup="popupClick">
 	<div
-		class="my-2 mx-2 text-base list-none bg-surface-100 divide-y divide-surface-200 rounded-lg drop-shadow-sm dark:bg-surface-700 dark:divide-gray-600"
+		class="my-2 mx-2 text-base list-none bg-surface-100 divide-y divide-surface-200 rounded-lg drop-shadow-sm dark:bg-surface-700 dark:divide-surface-600"
 	>
 		<a
 			href="/me/account"
