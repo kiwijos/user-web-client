@@ -25,7 +25,7 @@
 </script>
 
 <div
-	class="flex flex-col justify-center max-w-sm h-full bg-surface-100 dark:variant-glass-surface p-4 space-y-8"
+	class="flex flex-col justify-center md:max-w-sm max-w-full h-full bg-surface-100 dark:bg-surface-800 p-4 space-y-8"
 >
 	<h2 class="h2 font-thin">Skapa ett nytt konto</h2>
 	<p class="font-bold">Har du redan ett konto? <a href="/login" class="anchor">Logga in här</a></p>
@@ -37,18 +37,18 @@
 		use:enhance
 	>
 		<label class="label">
-			<span>Vad ska vi kalla dig?</span>
+			<span class="text-sm font-bold">Vad ska vi kalla dig?</span>
 			<input
 				class="input"
 				title="Input (användarnamn)"
 				type="text"
-				placeholder="username"
+				placeholder="användarnamn"
 				name="username"
 			/>
-			<p class="text-error-400">&nbsp;{usernameError}</p>
+			<p class="text-error-400 text-xs">&nbsp;{usernameError}</p>
 		</label>
 		<label class="label">
-			<span>Din mail</span>
+			<span class="text-sm font-bold">Din mail</span>
 			<input
 				class="input"
 				title="Input (mail)"
@@ -57,10 +57,10 @@
 				autocomplete="email"
 				name="email"
 			/>
-			<p class="text-error-400">&nbsp;{emailError}</p>
+			<p class="text-error-400 text-xs">&nbsp;{emailError}</p>
 		</label>
 		<label class="label">
-			<span>Ditt lösenord</span>
+			<span class="text-sm font-bold">Ditt lösenord</span>
 			<input
 				class="input"
 				title="Input (lösenord)"
@@ -68,7 +68,7 @@
 				placeholder="lösenord"
 				name="password"
 			/>
-			<p class="text-error-400">&nbsp;{passwordError}</p>
+			<p class="text-error-400 text-xs">&nbsp;{passwordError}</p>
 		</label>
 		<button
 			class="btn bg-primary-500 text-white"

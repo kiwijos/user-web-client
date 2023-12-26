@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="flex flex-col justify-center md:max-w-sm max-w-full h-full bg-surface-100 dark:variant-glass-surface p-4 space-y-8"
+	class="flex flex-col justify-center md:max-w-sm max-w-full h-full bg-surface-100 dark:bg-surface-800 p-4 space-y-8"
 >
 	<h2 class="h2 font-thin">Logga in på ditt konto</h2>
 	<p class="font-bold">
@@ -40,7 +40,7 @@
 		class="flex flex-col space-y-2"
 	>
 		<label class="label">
-			<span>Din mail</span>
+			<span class="text-sm font-bold">Din mail</span>
 			<input
 				class="input"
 				title="Input (mail)"
@@ -51,7 +51,7 @@
 			<p class="text-error-400 text-xs">&nbsp;</p>
 		</label>
 		<label class="label">
-			<span>Ditt lösenord</span>
+			<span class="text-sm font-bold">Ditt lösenord</span>
 			<input
 				class="input"
 				title="Input (lösenord)"
