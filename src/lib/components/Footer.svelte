@@ -43,7 +43,7 @@
 </script>
 
 <div class="divide-y divide-surface-200 bg-surface-100 dark:bg-surface-900 dark:divide-surface-800">
-	<nav class="mx-auto max-w-4xl py-20 px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+	<nav class="mx-auto max-w-4xl py-20 px-8 grid grid-cols-2 md:grid-cols-4 gap-4">
 		{#each paths as { title, subpaths }}
 			<ul class="list-none flex flex-col col-span-1">
 				<li class="py-2">
