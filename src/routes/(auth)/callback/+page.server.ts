@@ -45,5 +45,5 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 	});
 
 	// We only use this endpoint to autheticate the user, so we don't need to display anything, redirect to the dashboard instead
-	throw redirect(302, '/me/dashboard');
+	throw redirect(302, '/');
 };
