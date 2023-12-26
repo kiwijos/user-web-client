@@ -29,7 +29,7 @@
 			slotLead="place-content-start"
 			slotTrail="place-content-end"
 			padding="p-2 px-4"
-			shadow="drop-shadow-lg"
+			shadow="drop-shadow-sm"
 		>
 			<svelte:fragment slot="lead">
 				<button
@@ -46,7 +46,7 @@
 				</button>
 				<a
 					class="btn btn-sm font-extrabold text-xl underline decoration-primary-400 dark:decoration-primary-800 decoration-4"
-					href="/me/dashboard">{brand}</a
+					href="/">{brand}</a
 				>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
@@ -56,10 +56,8 @@
 				</div>
 				{#if !$page.data.user}
 					<div class="space-x-2">
-						<a class="btn btn-sm" href="/login">Sign In</a>
-						<a
-							class="btn btn-sm text-white bg-gradient-to-br variant-gradient-secondary-primary"
-							href="/register">Create Account</a
+						<a class="btn btn-sm" href="/login">Logga in</a>
+						<a class="btn btn-sm variant-filled-primary !text-white" href="/register">Skapa konto</a
 						>
 					</div>
 				{:else}
@@ -68,9 +66,7 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-	<div class="mx-auto max-w-4xl p-4 md:p-8">
-		<slot />
-	</div>
+	<slot />
 	<svelte:fragment slot="pageFooter">
 		<Footer />
 	</svelte:fragment>
