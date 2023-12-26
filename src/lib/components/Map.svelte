@@ -5,7 +5,10 @@
 
 	let mapContainer: HTMLDivElement;
 
+	/** The width of the map container */
 	export let width = 'w-full';
+
+	/** The height of the map container */
 	export let height = 'h-full';
 
 	$: if (mapContainer) {
@@ -18,7 +21,6 @@
 			zoom: initialState.zoom,
 			attributionControl: true
 		});
-		// map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
 		mapStore.set(map);
 	}
@@ -33,12 +35,6 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-
-	/* .map-wrap {
-		position: relative;
-		width: 100%;
-		height: 300px;
-	} */
 
 	.map {
 		position: absolute;
