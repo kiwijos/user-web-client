@@ -5,7 +5,7 @@
 	export let listLayout: string = '';
 
 	const paths = [
-		{ name: 'Hem', path: '/me/dashboard' },
+		{ name: 'Hem', path: '/' },
 		{ name: 'Konto', path: '/me/account' },
 		{ name: 'Säkerhet', path: '/blog/safety' },
 		{ name: 'Parkering', path: '/blog/parking' }
