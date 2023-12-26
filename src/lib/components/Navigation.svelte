@@ -4,12 +4,15 @@
 
 	export let listLayout: string = '';
 
-	const paths = [
-		{ name: 'Hem', path: '/' },
-		{ name: 'Profil', path: '/me/account' },
-		{ name: 'Betalningar', path: '/me/account/transactions' },
-		{ name: 'Resehistorik', path: '/me/account/trips' }
-	];
+	const paths = [{ name: 'Hem', path: '/' }];
+
+	if ($page.data.user !== null) {
+		paths.push(
+			{ name: 'Profil', path: '/me/account' },
+			{ name: 'Betalningar', path: '/me/account/transactions' },
+			{ name: 'Resehistorik', path: '/me/account/trips' }
+		);
+	}
 
 	const drawerStore = getDrawerStore();
 
