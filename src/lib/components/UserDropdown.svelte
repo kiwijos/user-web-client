@@ -17,12 +17,6 @@
 	class="md:me-0 rounded-full focus:ring-4 focus:ring-surface-300 dark:focus:ring-surface-600 relative inline-block"
 	use:popup={popupClick}
 >
-	<!-- {#if $page.data.user.has_setup_payment === false}
-		<span
-			class="badge-icon variant-filled-warning absolute -top-1 -right-1 z-10 text-white text-xs font-bold w-4 h-4"
-			>!</span
-		>
-	{/if} -->
 	<Avatar width="w-8" src={$page.data.user.avatar} initials={$page.data.user.name[0]} />
 </button>
 <div data-popup="popupClick">
