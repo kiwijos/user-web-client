@@ -6,9 +6,9 @@
 
 	const paths = [
 		{ name: 'Hem', path: '/' },
-		{ name: 'Konto', path: '/me/account' },
-		{ name: 'Säkerhet', path: '/blog/safety' },
-		{ name: 'Parkering', path: '/blog/parking' }
+		{ name: 'Profil', path: '/me/account' },
+		{ name: 'Betalningar', path: '/me/account/transactions' },
+		{ name: 'Resehistorik', path: '/me/account/trips' }
 	];
 
 	const drawerStore = getDrawerStore();
