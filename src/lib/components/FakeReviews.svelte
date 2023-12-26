@@ -34,18 +34,18 @@
 	>
 		<Ratings value={review.rating} max={5} class="md:!w-fit">
 			<svelte:fragment slot="empty">
-				<span class="text-3xl"><Fa icon={faCircleRegular} /></span>
+				<span class="text-3xl dark:text-surface-300"><Fa icon={faCircleRegular} /></span>
 			</svelte:fragment>
 			<svelte:fragment slot="half">
-				<span class="text-3xl">
+				<span class="text-3xl dark:text-surface-300">
 					<Fa icon={faCircleHalfStroke} />
 				</span>
 			</svelte:fragment>
 			<svelte:fragment slot="full">
-				<span class="text-3xl"><Fa icon={faCircle} /></span>
+				<span class="text-3xl dark:text-surface-300"><Fa icon={faCircle} /></span>
 			</svelte:fragment>
 		</Ratings>
-		<blockquote class="grow blockquote flex flex-col">
+		<blockquote class="grow blockquote flex flex-col dark:text-surface-300">
 			"{review.text}"<span class="text-right font-medium">- {review.author}</span>
 		</blockquote>
 	</div>
