@@ -66,7 +66,7 @@
 		>
 			<li>
 				<a
-					href="/me/dashboard"
+					href="/"
 					class="btn btn-icon bg-primary-500 dark:bg-primary-800 font-extrabold text-2xl text-white dark:text-gray-300"
 				>
 					{icon}
