@@ -11,7 +11,7 @@
 	const github_url = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${PUBLIC_GITHUB_ID}`;
 </script>
 
-<h2 class="h2 font-thin text-surface-700 dark:text-surface-300">Logga in på ditt konto</h2>
+<h1 class="text-4xl font-thin text-surface-700 dark:text-surface-300">Logga in på ditt konto</h1>
 <p class="font-medium text-surface-700 dark:text-surface-300">
 	Har du inget konto? <a href="/register" class="anchor">Skapa ett konto</a>
 </p>

@@ -24,7 +24,7 @@
 	}
 </script>
 
-<h2 class="h2 font-thin text-surface-700 dark:text-surface-300">Skapa ett nytt konto</h2>
+<h1 class="text-4xl font-thin text-surface-700 dark:text-surface-300">Skapa ett nytt konto</h1>
 <p class="font-medium text-surface-700 dark:text-surface-300">
 	Har du redan ett konto? <a href="/login" class="anchor">Logga in här</a>
 </p>
