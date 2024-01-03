@@ -12,7 +12,7 @@
 		{icon}
 	</a>
 	<div
-		class="flex flex-col justify-start md:max-w-sm max-w-full h-full bg-surface-100 dark:bg-surface-800 px-4 py-4 md:py-8 space-y-8 md:rounded-r-3xl md:shadow-lg"
+		class="flex flex-col justify-start md:max-w-sm max-w-full h-full bg-surface-100 dark:bg-surface-800 px-4 py-4 md:py-8 space-y-8 md:rounded-r-xl md:shadow-lg"
 	>
 		<slot />
 	</div>
