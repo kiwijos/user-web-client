@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 	const code = url.searchParams.get('code'); // Get the temporary code from the query string
 
 	// Redirect to login if the user denies access or manually types in the url `/callback`
-	if (!code || code === null) {
+	if (typeof code !== 'string' || !code) {
 		throw redirect(302, '/login');
 	}
 
