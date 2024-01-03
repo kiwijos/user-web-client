@@ -1,7 +1,8 @@
 import {
 	faCog,
 	faCreditCard,
-	faMapMarkerAlt,
+	// faMapMarkerAlt,
+	faRoute,
 	faWallet,
 	faUser
 } from '@fortawesome/free-solid-svg-icons';
@@ -19,5 +20,5 @@ export const accountLinksWithIcons = [
 	{ name: 'Inställningar', path: '/me/account/settings', icon: faCog },
 	{ name: 'Kortuppgifter', path: '/me/account/payment', icon: faCreditCard },
 	{ name: 'Betalningar', path: '/me/account/transactions', icon: faWallet },
-	{ name: 'Resehistorik', path: '/me/account/trips', icon: faMapMarkerAlt }
+	{ name: 'Resehistorik', path: '/me/account/trips', icon: faRoute }
 ];
