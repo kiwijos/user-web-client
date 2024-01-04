@@ -17,17 +17,23 @@
 	class="md:me-0 rounded-full focus:ring-4 focus:ring-surface-300 dark:focus:ring-surface-600 relative inline-block"
 	use:popup={popupClick}
 >
-	<Avatar width="w-8" src={$page.data.user.avatar} initials={$page.data.user.name[0]} />
+	<Avatar
+		width="w-8"
+		background="bg-gray-300 dark:bg-surface-600"
+		initials={$page.data.user.email[0]}
+	/>
 </button>
 <div data-popup="popupClick">
 	<div
-		class="my-2 mx-2 text-base list-none bg-surface-100 divide-y divide-surface-200 rounded-lg drop-shadow-sm dark:bg-surface-700 dark:divide-surface-600"
+		class="min-w-52 my-2 mx-2 text-base list-none bg-surface-100 divide-y divide-surface-200 rounded-lg drop-shadow-sm dark:bg-surface-700 dark:divide-surface-600"
 	>
 		<a
 			href="/me/account"
 			class="block rounded-t-lg px-4 py-3 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
 		>
-			<span class="block text-sm text-gray-900 dark:text-white">{$page.data.user.name}</span>
+			<span class="block text-sm text-gray-900 dark:text-white capitalize"
+				>{$page.data.user.email.split('@')[0]}</span
+			>
 			<span class="block text-sm text-gray-500 truncate dark:text-gray-400"
 				>{$page.data.user.email}</span
 			>
