@@ -21,7 +21,7 @@
 	}
 </script>
 
-<ul class={listLayout}>
+<ul class={listLayout} data-sveltekit-preload-data="false">
 	{#each paths as { name, path }}
 		{@const active = $page.url.pathname === path ? 'page' : null}
 		{@const activeClass =
