@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Drawer, getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
+	import { Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import UserDropdown from '$lib/components/UserDropdown.svelte';
@@ -25,15 +25,18 @@
 	<svelte:fragment slot="header">
 		<AppBar
 			background="dark:bg-surface-800 bg-surface-100"
-			slotDefault="place-self-start"
+			gridColumns="grid-cols-3"
+			slotDefault="place-self-center"
 			slotLead="place-content-start"
-			slotTrail="place-content-end"
-			padding="p-2 px-4"
+			slotTrail="place-content-end col-start-2 col-end-4 md:col-start-3 row-start-1 md:row-start-auto"
+			padding="py-2 px-4"
 			shadow="drop-shadow-sm"
+			spacing="space-x-0 space-y-0"
+			gap="gap-0"
 		>
 			<svelte:fragment slot="lead">
 				<button
-					class="md:hidden mr-2 w-8 h-8 rounded-full focus:ring-4 focus:ring-surface-300 dark:focus:ring-surface-600 relative inline-block"
+					class="md:hidden md:mr-2 w-8 h-8 rounded-full focus:ring-4 focus:ring-surface-300 dark:focus:ring-surface-600 relative inline-block"
 					on:click={drawerOpen}
 				>
 					<span>
@@ -45,18 +48,17 @@
 					</span>
 				</button>
 				<a
-					class="btn btn-sm font-extrabold text-xl underline decoration-primary-400 dark:decoration-primary-800 decoration-4"
+					class="hidden md:flex btn btn-sm font-extrabold text-xl underline decoration-primary-400 dark:decoration-primary-800 decoration-4"
 					href="/">{brand}</a
 				>
 			</svelte:fragment>
+			<div class="hidden md:flex items-center space-x-2">
+				<Navigation listLayout="flex items-center" />
+			</div>
 			<svelte:fragment slot="trail">
-				<div class="hidden md:flex items-center space-x-2">
-					<Navigation listLayout="flex items-center" />
-					<LightSwitch />
-				</div>
 				{#if !$page.data.user}
 					<div class="space-x-2">
-						<a class="btn btn-sm" href="/login">Logga in</a>
+						<a class="btn btn-sm variant-ringed" href="/login">Logga in</a>
 						<a class="btn btn-sm variant-filled-primary !text-white" href="/register">Skapa konto</a
 						>
 					</div>
