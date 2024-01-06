@@ -2,6 +2,7 @@ import { join } from 'path';
 import type { Config } from 'tailwindcss';
 import forms from '@tailwindcss/forms';
 import plugin from 'tailwindcss/plugin';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 // 1. Import the Skeleton plugin
 import { skeleton } from '@skeletonlabs/tw-plugin';
@@ -21,6 +22,10 @@ const config: Config = {
 				DEFAULT: '0 2px 4px var(--tw-shadow-color)',
 				lg: '0 8px 16px var(--tw-shadow-color)'
 			}
+		},
+		screens: {
+			xs: '475px',
+			...defaultTheme.screens
 		}
 	},
 	plugins: [
