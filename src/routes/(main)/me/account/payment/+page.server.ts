@@ -1,11 +1,10 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import type { Action, Actions, PageServerLoad } from './$types';
+import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load: PageServerLoad = async () => {
-	// TODO: check if user is already logged in
-};
+export const load: PageServerLoad = async () => {};
 
-const updatePaymentMethod: Action = async ({ request }) => {
+const updatePaymentMethod: Action = async ({ request, cookies }) => {
 	const data = await request.formData();
 
 	const cardType = data.get('cardType');
@@ -34,7 +33,34 @@ const updatePaymentMethod: Action = async ({ request }) => {
 		return fail(400, { errors: errors });
 	}
 
-	throw redirect(303, '/me/account');
+	const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`, {
+		method: 'PUT',
+		headers: {
+			'x-access-token': cookies.get('session'),
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			card_type: cardType,
+			card_nr: cardNumber
+		})
+	});
+
+	if (!response.ok) {
+		const result = await response.json();
+
+		let message;
+		if (result.errors?.detail) message = result.errors.detail;
+		else if (result.errors?.message) message = result.errors.message;
+		else message = String(result.errors);
+
+		console.error(message);
+
+		return fail(400, {
+			errors: [{ field: 'cardNumber', message: 'Kunde inte uppdatera kortuppgifterna' }]
+		});
+	}
+
+	return { success: true };
 };
 
 export const actions: Actions = { updatePaymentMethod };
