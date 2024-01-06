@@ -24,7 +24,7 @@
 		});
 </script>
 
-<ol class="breadcrumb">
+<ol class="breadcrumb" data-sveltekit-preload-data="false">
 	{#each myBreadcrumbs as crumb, i}
 		{#if i < myBreadcrumbs.length - 1}
 			<li class="crumb"><a class="anchor" href={crumb.link}>{crumb.label}</a></li>
