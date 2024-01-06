@@ -17,31 +17,42 @@
 
 <div class="space-y-8">
 	<div class="flex space-x-4 items-start">
-		<Avatar background="bg-gray-300 dark:bg-surface-600" initials={$page.data.user.email[0]} />
+		<Avatar background="bg-gray-200 dark:bg-surface-600" initials={$page.data.user.email[0]} />
 		<div>
 			<p class="text-2xl capitalize">{$page.data.user.email.split('@')[0]}</p>
 			<p class="text-gray-500 dark:text-gray-400">{$page.data.user.email}</p>
 		</div>
 	</div>
 	{#if data?.card}
-		<a
-			href="/me/account/payment"
-			class="p-2 card card-hover h-28 w-52 border-2 border-primary-500 dark:border-tertiary-700 grid grid-cols-3 grid-rows-3 rounded-container-token bg-gradient-to-br from-primary-500 via-tertiary-300 to-secondary-400 dark:from-tertiary-800 dark:via-tertiary-900 dark:to-primary-800"
-		>
-			<div
-				class="text-2xl col-start-3 row-start-1 justify-self-end text-white dark:text-primary-200"
+		<div class="flex flex-col-reverse xs:flex-row gap-4">
+			<a
+				href="/me/account/payment"
+				class="p-2 card card-hover h-28 w-full sm:w-52 border-2 border-primary-500 dark:border-tertiary-700 grid grid-cols-3 grid-rows-3 rounded-container-token bg-gradient-to-br from-primary-500 via-tertiary-300 to-secondary-400 dark:from-tertiary-800 dark:via-tertiary-900 dark:to-primary-800"
 			>
-				<Fa icon={cardOptions[data.card.card_type - 1].icon} />
-			</div>
-			<p
-				class="text-white dark:text-primary-200 text-center text-sm text-shadow text-shadow-sm shadow-primary-900 col-span-3 row-start-3"
+				<div
+					class="text-2xl col-start-3 row-start-1 justify-self-end text-white dark:text-primary-200"
+				>
+					<Fa icon={cardOptions[data.card.card_type - 1].icon} />
+				</div>
+				<p
+					class="text-white dark:text-primary-200 text-center text-sm text-shadow text-shadow-sm shadow-primary-900 col-span-3 row-start-3"
+				>
+					{data.card.card_nr
+						? `${data.card.card_nr.substring(0, 4)} XXXX XXXX XXXX`
+						: 'Kortnummer saknas'}
+				</p>
+			</a>
+			<a
+				href="/me/account/payment"
+				class="card card-hover h-28 variant-soft-success grow rounded-container-token flex items-center justify-center p-4 text-center text-surface-700 dark:text-surface-300 text-2xl font-bold"
 			>
-				{data.card.card_nr
-					? `${data.card.card_nr.substring(0, 4)} XXXX XXXX XXXX`
-					: 'Kortnummer saknas'}
-			</p>
-		</a>
-		<div class="flex gap-4"></div>
+				<p class="text-success-900 dark:text-success-700 font-extrabold">
+					<span class="text-4xl">500</span><span class="text-2lg">,67</span><span
+						class="ml-2 text-4xl text-success-400 dark:text-success-900">kr</span
+					>
+				</p>
+			</a>
+		</div>
 	{:else}
 		<div class="p-4 rounded-lg variant-soft-primary w-full sm:w-52 space-y-2" role="alert">
 			<div class="flex items-center mb-3">
@@ -67,7 +78,7 @@
 	<UserNav
 		asideClasses="block sm:hidden"
 		itemHover="hover:bg-surface-100 hover:dark:bg-surface-700"
-		container="dark:bg-surface-800 rounded-container-token"
+		container="card bg-gray-100 dark:bg-surface-800 rounded-container-token"
 		lastItem="rounded-b-md"
 		firstItem="rounded-t-md"
 	/>
