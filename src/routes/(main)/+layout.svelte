@@ -16,7 +16,10 @@
 
 <!-- The drawer overlays the page when active -->
 <Drawer width="w-3/4 md:w-96">
-	<Navigation listLayout="p-4" />
+	<Navigation
+		navClasses="h-full flex flex-col justify-evenly"
+		itemClasses="justify-start grow text-xl p-8"
+	/>
 </Drawer>
 
 <AppShell
@@ -53,7 +56,7 @@
 				>
 			</svelte:fragment>
 			<div class="hidden md:flex items-center space-x-2">
-				<Navigation listLayout="flex items-center" />
+				<Navigation navClasses="flex items-center" />
 			</div>
 			<svelte:fragment slot="trail">
 				{#if !$page.data.user}
