@@ -29,8 +29,8 @@ export const load: PageLoad = async ({ locals }) => {
 		cards.unshift({
 			title: 'Hej kompis! 👋',
 			description:
-				'Frihet på två hjul är bara ett par knapptryck bort. Skapa ett konto och att börja åka idag!',
-			link: '/login',
+				'Frihet på två hjul är bara ett par knapptryck bort. Skapa ett konto för att börja åka idag!',
+			link: '/register',
 			cta: 'Skapa konto'
 		});
 	} else if (!locals?.user?.has_setup_payment) {
