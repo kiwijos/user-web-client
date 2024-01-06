@@ -1,16 +1,20 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
+	import { getToastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings, ToastStore } from '@skeletonlabs/skeleton';
 	import Fa from 'svelte-fa';
-	import { faCcMastercard, faCcVisa, faCcAmex } from '@fortawesome/free-brands-svg-icons';
+	import { cardOptions } from '$lib/utils/cardOptions';
+
+	const toastStore: ToastStore = getToastStore();
+
+	const toastSettings: ToastSettings = {
+		message: 'Din kortuppgifter har uppdaterats',
+		timeout: 10000,
+		background: 'variant-filled-success'
+	};
 
 	export let form: ActionData;
-
-	const cardOptions = [
-		{ name: 'Mastercard', value: '1', checked: true, icon: faCcMastercard, color: '' },
-		{ name: 'Visa', value: '2', checked: false, icon: faCcVisa, color: '#1434CB' },
-		{ name: 'American Express', value: '3', checked: false, icon: faCcAmex, color: '#016FD0' }
-	];
 
 	const countryOptions = [{ name: 'Sverige', value: '1' }];
 
@@ -24,6 +28,10 @@
 		cardNumberError =
 			form.errors.find((error: { field: string; message: string }) => error.field === 'cardNumber')
 				?.message ?? '';
+	}
+
+	$: if (form?.success) {
+		toastStore.trigger(toastSettings);
 	}
 </script>
 
