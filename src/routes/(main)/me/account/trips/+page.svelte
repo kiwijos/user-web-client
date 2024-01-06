@@ -14,7 +14,7 @@
 	import type { Trip } from '$lib/types/Trip';
 	import type { TripFormatted } from '$lib/types/TripFormatted';
 
-	function onRowSelect(event): void {
+	function onRowSelect(event: CustomEvent): void {
 		console.log(event.detail);
 	}
 
@@ -105,11 +105,13 @@
 <div class="space-y-4">
 	<Paginator
 		bind:settings={paginationSettings}
-		showFirstLastButtons={true}
+		showFirstLastButtons={false}
 		showPreviousNextButtons={true}
 		amountText="Resor"
-		select="dark:bg-surface-800 rounded-lg dark:border-surface-800"
-		controlVariant="dark:bg-surface-800"
+		separatorText="av"
+		select="text-xs sm:text-sm dark:bg-surface-800 rounded-lg dark:border-surface-800"
+		controlVariant="text-xs sm:text-sm dark:bg-surface-800"
+		class="!flex-row gap-2 !space-x-0 !space-y-0 [&>label]:w-fit"
 	/>
 	<div class="overflow-x-scroll">
 		<Table
