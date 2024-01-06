@@ -25,9 +25,9 @@
 	</a>
 </div>
 <div class="inline-flex items-center justify-between w-full">
-	<hr class="w-16" />
+	<hr class="w-12 md:w-16" />
 	<span class="px-3 text-gray-500 dark:text-gray-400">Eller med mail och lösenord</span>
-	<hr class="w-16" />
+	<hr class="w-12 md:w-16" />
 </div>
 <form
 	use:focusTrap={isFocused}
