@@ -1,34 +1,66 @@
 import type { Handle } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
+import { jwtDecode } from 'jwt-decode';
+import type { CustomJwtPayload } from './lib/types/CustomJwtPayload';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const accessToken = event.cookies.get('session');
+	const token = event.cookies.get('session');
 
-	// If there's no access token, just resolve the request as normal
-	if (typeof accessToken !== 'string' || !accessToken) return await resolve(event);
+	// Redirect early to login page if the user is not logged in
+	if (typeof token !== 'string' || !token) {
+		// Sometimes the user object is still in the request locals, for example if:
+		// 	- the cookie expired
+		// 	- the cookie was removed manually (e.g. via the browser dev tools)
+		// The user object is only explicitly set to null when:
+		// 	- the user logs out via /logout
+		// 	- the token check fails (e.g. invalid or expired token)
+		event.locals.user = null; // <-- make sure the user object is null in any case
 
-	// Fetch the user data from the GitHub API
-	const userResponse = await fetch('https://api.github.com/user', {
-		headers: { Authorization: `Bearer ${accessToken}` }
-	});
+		// No token, no access to the me page
+		if (event.url.pathname.startsWith('/me')) {
+			throw error(
+				403,
+				`För att få tillgång till sidan ${event.request.url} måste du vara inloggad.`
+			);
+		}
 
-	// the user data contains things like the user's name, full name and avatar
-	const userData = await userResponse.json();
+		return await resolve(event); // <-- no token, no problem (resolve the request as normal)
+	}
 
-	// fetch the user's email from GitHub API
-	const emailResponse = await fetch('https://api.github.com/user/emails', {
-		headers: { Authorization: `Bearer ${accessToken}` }
-	});
+	let decoded: CustomJwtPayload;
+	const expDate = new Date(0);
 
-	// the email data contains the user's emailaddressess and whether they are verified etc.
-	const emails = await emailResponse.json();
+	try {
+		decoded = jwtDecode(token); // <-- throws if the token is malformed for example
+		const exp = decoded.exp as number;
+		expDate.setUTCSeconds(exp);
+	} catch (error) {
+		let message;
+		if (error instanceof Error) message = error.message;
+		else message = String(error);
 
-	const primaryEmail = emails.find((email) => email.primary && email.verified)?.email || '';
+		console.error(message);
 
+		// Invalid token, force the user to log in again
+		event.locals.user = null;
+		event.cookies.delete('session', { path: '/' });
+
+		throw error(403, 'Det gick inte att verifiera din session. Logga in igen.');
+	}
+
+	if (expDate < new Date()) {
+		// Expired token, force the user to log in again
+		event.locals.user = null;
+		event.cookies.delete('session', { path: '/' });
+
+		throw error(403, 'Sessionen har gått ut. Logga in igen.');
+	}
+
+	// Valid token, presumably with some valid user data in it
+	// Put the user data in the request so that it can be used in the page load functions
 	event.locals.user = {
-		name: userData.login,
-		email: primaryEmail,
-		avatar: userData.avatar_url,
-		has_setup_payment: false
+		id: decoded.id,
+		email: decoded.email
 	};
 
 	return await resolve(event);
