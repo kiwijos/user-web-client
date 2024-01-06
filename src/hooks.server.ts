@@ -2,6 +2,19 @@ import type { Handle } from '@sveltejs/kit';
 import { error } from '@sveltejs/kit';
 import { jwtDecode } from 'jwt-decode';
 import type { CustomJwtPayload } from './lib/types/CustomJwtPayload';
+import type { HandleFetch } from '@sveltejs/kit';
+import { PUBLIC_REST_API_URL } from '$env/static/public';
+import { PRIVATE_REST_API_KEY } from '$env/static/private';
+
+export const handleFetch: HandleFetch = async ({ request, fetch, event }) => {
+	if (request.url.startsWith(PUBLIC_REST_API_URL)) {
+		// Add headers to requests to the public REST API
+		request.headers.set('x-access-token', event.cookies.get('session'));
+		request.headers.set('x-api-key', PRIVATE_REST_API_KEY);
+	}
+
+	return fetch(request);
+};
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get('session');
