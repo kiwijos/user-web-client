@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.pcss';
 	import { autoModeWatcher, LightSwitch } from '@skeletonlabs/skeleton';
+	import { Toast } from '@skeletonlabs/skeleton';
 	import { initializeStores } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
@@ -12,6 +13,7 @@
 <svelte:head>
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
+<Toast />
 <slot />
 <div class="fixed bottom-0 right-0 z-50 p-4">
 	<LightSwitch />
