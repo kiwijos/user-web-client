@@ -2,7 +2,8 @@
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 
-	export let listLayout: string = '';
+	export let navClasses: string = '';
+	export let itemClasses: string = '';
 
 	const paths = [{ name: 'Hem', path: '/' }];
 
@@ -21,15 +22,16 @@
 	}
 </script>
 
-<ul class={listLayout} data-sveltekit-preload-data="false">
+<nav class={navClasses} data-sveltekit-preload-data="false">
 	{#each paths as { name, path }}
 		{@const active = $page.url.pathname === path ? 'page' : null}
 		{@const activeClass =
 			$page.url.pathname === path ? '!variant-soft-primary ' : 'hover:!variant-soft-primary'}
-		<li>
-			<a class="btn btn-sm {activeClass}" aria-current={active} href={path} on:click={drawerClose}
-				>{name}</a
-			>
-		</li>
+		<a
+			class="btn btn-sm {activeClass} {itemClasses}"
+			aria-current={active}
+			href={path}
+			on:click={drawerClose}>{name}</a
+		>
 	{/each}
-</ul>
+</nav>
