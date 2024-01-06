@@ -1,23 +1,17 @@
 import type { PageServerLoad } from './$types';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load: PageServerLoad = async ({ cookies, fetch }) => {
+export const load: PageServerLoad = async ({ fetch }) => {
 	let cardDetails;
 
 	try {
-		const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				'x-access-token': cookies.get('session')
-			}
-		});
+		const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`);
 
 		cardDetails = await response.json();
 
 		if (!response.ok) {
 			// When the response is not OK, the server will return an `errors` object
-			// In the case of no card, the server will return a 404 status code
+			// In the case of no card, the server will return a 404 status code (that's the plan anyway)
 			let message;
 			if (cardDetails.errors?.detail) message = cardDetails.errors.detail;
 			else if (cardDetails.errors?.message) message = cardDetails.errors.message;

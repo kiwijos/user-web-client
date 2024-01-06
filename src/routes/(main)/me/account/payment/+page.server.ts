@@ -4,7 +4,7 @@ import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 export const load: PageServerLoad = async () => {};
 
-const updatePaymentMethod: Action = async ({ request, cookies }) => {
+const updatePaymentMethod: Action = async ({ request, fetch }) => {
 	const data = await request.formData();
 
 	const cardType = data.get('cardType');
@@ -35,10 +35,7 @@ const updatePaymentMethod: Action = async ({ request, cookies }) => {
 
 	const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`, {
 		method: 'PUT',
-		headers: {
-			'x-access-token': cookies.get('session'),
-			'Content-Type': 'application/json'
-		},
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			card_type: cardType,
 			card_nr: cardNumber
