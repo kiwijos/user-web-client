@@ -19,7 +19,7 @@
 >
 	<Avatar
 		width="w-8"
-		background="bg-gray-300 dark:bg-surface-600"
+		background="bg-gray-200 dark:bg-surface-600"
 		initials={$page.data.user.email[0]}
 	/>
 </button>
