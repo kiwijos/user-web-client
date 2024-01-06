@@ -1,3 +1,7 @@
+import type { Trip } from '$lib/types/Trip';
+import type { Transaction } from '$lib/types/Transaction';
+import type { Card } from '$lib/types/Card';
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
@@ -5,13 +9,15 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: {
-				name: string;
+				id: number;
 				email: string;
-				avatar: string;
-				has_setup_payment: boolean;
 			};
 		}
-		// interface PageData {}
+		interface PageData {
+			card?: Card;
+			trips?: Trip[];
+			transactions?: Transaction[];
+		}
 		// interface Platform {}
 	}
 }
