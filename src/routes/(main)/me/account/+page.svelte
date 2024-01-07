@@ -6,12 +6,8 @@
 	import { faXmark } from '@fortawesome/free-solid-svg-icons';
 	import { faCcMastercard, faCcVisa, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 	import UserNav from '$lib/components/UserNav.svelte';
+	import { cardOptions } from '$lib/utils/cardOptions';
 
-	const cardOptions = [
-		{ name: 'Mastercard', icon: faCcMastercard },
-		{ name: 'Visa', icon: faCcVisa },
-		{ name: 'American Express', icon: faCcAmex }
-	];
 	export let data: PageData;
 </script>
 
@@ -23,7 +19,7 @@
 			<p class="text-gray-500 dark:text-gray-400">{$page.data.user.email}</p>
 		</div>
 	</div>
-	{#if data?.card}
+	{#if data?.card !== undefined}
 		<div class="flex flex-col-reverse xs:flex-row gap-4">
 			<a
 				href="/me/account/payment"
@@ -43,7 +39,7 @@
 				</p>
 			</a>
 			<a
-				href="/me/account/payment"
+				href="/me/account/prepay"
 				class="card card-hover h-28 variant-soft-success grow rounded-container-token flex items-center justify-center p-4 text-center text-surface-700 dark:text-surface-300 text-2xl font-bold"
 			>
 				<p class="text-success-900 dark:text-success-700 font-extrabold">
