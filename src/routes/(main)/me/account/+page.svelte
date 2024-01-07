@@ -4,7 +4,6 @@
 	import type { PageData } from './$types';
 	import Fa from 'svelte-fa';
 	import { faXmark } from '@fortawesome/free-solid-svg-icons';
-	import { faCcMastercard, faCcVisa, faCcAmex } from '@fortawesome/free-brands-svg-icons';
 	import UserNav from '$lib/components/UserNav.svelte';
 	import { cardOptions } from '$lib/utils/cardOptions';
 
