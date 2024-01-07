@@ -47,10 +47,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		decoded = jwtDecode(token); // <-- throws if the token is malformed for example
 		const exp = decoded.exp as number;
 		expDate.setUTCSeconds(exp);
-	} catch (error) {
+	} catch (e) {
 		let message;
-		if (error instanceof Error) message = error.message;
-		else message = String(error);
+		if (e instanceof Error) message = e.message;
+		else message = String(e);
 
 		console.error(message);
 

@@ -1,5 +1,4 @@
-import { redirect } from '@sveltejs/kit';
-import { error } from '@sveltejs/kit';
+import { redirect, error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { PUBLIC_GITHUB_ID } from '$env/static/public';
 import { GITHUB_SECRET } from '$env/static/private';
@@ -24,7 +23,7 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 			console.error(`Error authenticating with GitHub: ${errorType} (${errorDescription})`);
 
 			throw error(
-				400,
+				403,
 				'Inloggning misslyckades. För att logga in måste du godkänna den här webbplatsen.'
 			);
 		}
@@ -48,10 +47,10 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 				code: code
 			})
 		});
-	} catch (error) {
+	} catch (e) {
 		let message;
-		if (error instanceof Error) message = error.message;
-		else message = String(error);
+		if (e instanceof Error) message = e.message;
+		else message = String(e);
 
 		console.error(
 			'Request failed unexpectedly when trying to exchange GitHub code for access token',
@@ -82,7 +81,7 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 	if (!scopes.includes('user:email')) {
 		console.error('The app does not have access to the "user:email" scope', githubResult);
 		throw error(
-			500,
+			403,
 			'Inloggning misslyckades. För att logga in måste du ge tillgång till din e-postadress.'
 		);
 	}
@@ -114,10 +113,10 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 				token: accessToken
 			})
 		});
-	} catch (error) {
+	} catch (e) {
 		let message;
-		if (error instanceof Error) message = error.message;
-		else message = String(error);
+		if (e instanceof Error) message = e.message;
+		else message = String(e);
 
 		console.error(message);
 
