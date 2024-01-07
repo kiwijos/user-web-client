@@ -8,7 +8,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			user: {
+			user: null | {
 				id: number;
 				email: string;
 			};
