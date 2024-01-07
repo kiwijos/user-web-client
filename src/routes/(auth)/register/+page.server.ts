@@ -1,9 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import type { Action, Actions, PageServerLoad } from './$types';
-
-export const load: PageServerLoad = async () => {
-	// TODO: check if user is already logged in
-};
+import type { Action, Actions } from './$types';
 
 const register: Action = async ({ request }) => {
 	const data = await request.formData();
