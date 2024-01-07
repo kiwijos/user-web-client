@@ -19,13 +19,17 @@ const updatePaymentMethod: Action = async ({ request, fetch }) => {
 		errors.push({ field: 'cardType', message: 'Kortet är inte giltigt' });
 	}
 
-	// remove all non-digits from card number
-	cardNumber = cardNumber.replace(/\D/g, '');
-
 	// Check card number should be 16 digits
 	if (typeof cardNumber !== 'string' || !cardNumber) {
 		errors.push({ field: 'cardNumber', message: 'Du måste ange ett 16-siffrigt kortnummer' });
-	} else if (cardNumber.length !== 16) {
+
+		return fail(400, { errors: errors }); // return early to avoid checks that are dependent on the card number being a string
+	}
+
+	// remove all non-digits from card number
+	cardNumber = <string>cardNumber.replace(/\D/g, '');
+
+	if (cardNumber.length !== 16) {
 		errors.push({ field: 'cardNumber', message: 'Kortnumret måste vara 16 siffror långt' });
 	}
 
