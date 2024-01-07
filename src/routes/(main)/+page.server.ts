@@ -1,6 +1,6 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals }) => {
 	const cards = [
 		{
 			title: 'Elektrifiera din vardag',
@@ -33,7 +33,7 @@ export const load: PageLoad = async ({ locals }) => {
 			link: '/register',
 			cta: 'Skapa konto'
 		});
-	} else if (!locals?.user?.has_setup_payment) {
+	} else {
 		cards.unshift({
 			title: 'Lås upp ditt första åk! 💫',
 			description:
