@@ -5,21 +5,17 @@ import { PUBLIC_REST_API_URL } from '$env/static/public';
 const prepay: Action = async ({ request, fetch }) => {
 	const data = await request.formData();
 
-	let amount = data.get('amount');
+	const amount = data.get('amount');
 
 	// Check amount should be a value larger than 0
 	if (typeof amount !== 'string' || !amount) {
 		return fail(400, { errors: [{ field: 'amount', message: 'Ange ett belopp' }] }); // return early to avoid checks that are dependent on the amount being a number
 	}
 
-	try {
-		amount = amount.replace(',', '.');
-		amount = parseFloat(amount);
-	} catch (e) {
-		return fail(400, { errors: [{ field: 'amount', message: 'Beloppet är inte giltigt' }] });
-	}
+	const amountString: string = <string>amount.replace(',', '.');
+	const amountNumeric: number = <number>parseFloat(amountString);
 
-	if (amount < 0) {
+	if (amountNumeric < 0) {
 		return fail(400, { errors: [{ field: 'amount', message: 'Beloppet måste vara större än 0' }] });
 	}
 
