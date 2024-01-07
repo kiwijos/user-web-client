@@ -5,13 +5,16 @@
 	import type { ToastSettings, ToastStore } from '@skeletonlabs/skeleton';
 	import Fa from 'svelte-fa';
 	import { cardOptions } from '$lib/utils/cardOptions';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	const toastStore: ToastStore = getToastStore();
 
 	const toastSettings: ToastSettings = {
 		message: 'Din kortuppgifter har uppdaterats',
 		timeout: 10000,
-		background: 'variant-filled-success'
+		background: 'variant-ghost-primary'
 	};
 
 	export let form: ActionData;
@@ -42,31 +45,35 @@
 	class="flex flex-col space-y-4 max-w-xl"
 >
 	<div class="space-y-2">
-		{#each cardOptions as card}
-			<label class="flex items-center space-x-2">
+		<p class="text-sm font-bold text-surface-700 dark:text-surface-300">Korttyp</p>
+		{#each cardOptions as card, index}
+			<label
+				class="p-4 cursor-pointer rounded-container-token flex items-center space-x-4 [&:has(input:checked)]:variant-soft-primary"
+			>
+				<span><Fa icon={card.icon} size="lg" /></span>
+				<p class="grow">{card.name}</p>
 				<input
 					class="radio"
 					type="radio"
-					checked={card.checked}
+					checked={index + 1 === data?.card?.card_type}
 					name="cardType"
 					value={card.value}
 				/>
-				<span class="text-surface-700 dark:text-surface-300"><Fa icon={card.icon} size="lg" /></span
-				>
-				<p>{card.name}</p>
 			</label>
 		{/each}
 		<p class="text-error-400">&nbsp;{cardTypeError}</p>
 	</div>
 	<label class="label">
-		<span>Ange dina kortuppgifter</span>
+		<span class="text-sm font-bold text-surface-700 dark:text-surface-300"
+			>Ange dina kortuppgifter</span
+		>
 		<div class="grid rounded-lg grid-rows-2 grid-cols-2">
 			<input
 				title="Kortnummer"
 				class="input !rounded-b-none rounded-t-md col-span-2"
 				type="number"
 				name="cardNumber"
-				placeholder="Kortnummer"
+				placeholder={data?.card?.card_nr ? data.card.card_nr : 'Kortnummer'}
 			/>
 			<input
 				title="Kortet är giltigt t.o.m."
@@ -86,7 +93,7 @@
 		<p class="text-error-400">&nbsp;{cardNumberError}</p>
 	</label>
 	<label class="label">
-		<span>Faktureringsadress</span>
+		<span class="text-sm font-bold text-surface-700 dark:text-surface-300">Faktureringsadress</span>
 		<div class="grid rounded-lg grid-rows-2 grid-cols-1">
 			<select
 				title="Land"
