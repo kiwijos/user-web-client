@@ -25,7 +25,6 @@
 </button>
 <div data-popup="popupClick">
 	<div
-		data-sveltekit-preload-data="false"
 		class="min-w-52 my-2 mx-2 text-base list-none bg-surface-100 divide-y divide-surface-200 rounded-lg drop-shadow-sm dark:bg-surface-700 dark:divide-surface-600"
 	>
 		<a

@@ -22,7 +22,7 @@
 	}
 </script>
 
-<nav class={navClasses} data-sveltekit-preload-data="false">
+<nav class={navClasses}>
 	{#each paths as { name, path }}
 		{@const active = $page.url.pathname === path ? 'page' : null}
 		{@const activeClass =

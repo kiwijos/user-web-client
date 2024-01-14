@@ -20,11 +20,7 @@
 	export let firstItem: string = '';
 </script>
 
-<aside
-	aria-label="Sidebar"
-	class="overflow-auto h-full {asideClasses}"
-	data-sveltekit-preload-data={preloadData}
->
+<aside aria-label="Sidebar" class="overflow-auto h-full {asideClasses}">
 	<div class="{divide} {container}">
 		<ul class={textStyle}>
 			{#each accountLinksWithIcons as link, index}
