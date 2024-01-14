@@ -6,7 +6,9 @@ export const load: LayoutServerLoad = async ({ fetch }) => {
 	let cardDetails;
 
 	try {
-		const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`);
+		const response = await fetch(`${PUBLIC_REST_API_URL}/user/card`, {
+			method: 'POST'
+		});
 
 		cardDetails = await response.json();
 
