@@ -9,7 +9,8 @@
 
 	export let data: PageData;
 
-	const [balance, balanceDecimals] = data?.balance?.toFixed(2).split('.');
+	const [balance, balanceDecimals] =
+		typeof data?.balance === 'number' ? data.balance.toFixed(2).split('.') : ['0', '00'];
 </script>
 
 <div class="space-y-8">
