@@ -8,6 +8,8 @@
 	import { cardOptions } from '$lib/utils/cardOptions';
 
 	export let data: PageData;
+
+	const [balance, balanceDecimals] = data?.balance?.toFixed(2).split('.');
 </script>
 
 <div class="space-y-8">
@@ -42,9 +44,8 @@
 				class="card card-hover h-28 variant-soft-success grow rounded-container-token flex items-center justify-center p-4 text-center text-surface-700 dark:text-surface-300 text-2xl font-bold"
 			>
 				<p class="text-success-900 dark:text-success-700 font-extrabold">
-					<span class="text-4xl">500</span><span class="text-2lg">,67</span><span
-						class="ml-2 text-4xl text-success-400 dark:text-success-900">kr</span
-					>
+					<span class="text-4xl">{balance}</span>,<span class="text-2lg">{balanceDecimals}</span
+					><span class="ml-2 text-4xl text-success-400 dark:text-success-900">kr</span>
 				</p>
 			</a>
 		</div>
