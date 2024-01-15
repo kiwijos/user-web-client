@@ -12,7 +12,6 @@
 	export let itemText: string = 'text-sm text-gray-700 dark:text-gray-200';
 	export let itemHover: string =
 		'hover:bg-gray-200 dark:hover:bg-surface-800 dark:hover:text-white';
-	export let preloadData: string = 'false';
 	export let textStyle: string = 'font-medium';
 	export let divide: string = 'divide-y divide-surface-300 dark:divide-surface-700';
 	export let container: string = '';
