@@ -39,7 +39,7 @@
 			<input
 				type="text"
 				placeholder={data?.card?.card_nr ? data.card.card_nr : 'Konto saknas'}
-				disabled
+				readonly
 				title="Sparat konto"
 			/>
 			<div class="input-group-shim">
