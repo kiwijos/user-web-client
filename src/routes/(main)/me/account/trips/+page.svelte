@@ -13,19 +13,35 @@
 	} from '$lib/services/dateFormatter';
 	import type { Trip } from '$lib/types/Trip';
 	import type { TripFormatted } from '$lib/types/TripFormatted';
+	import { getModalStore, type ModalSettings } from '@skeletonlabs/skeleton';
 
-	function onRowSelect(event: CustomEvent): void {
-		console.log(event.detail);
-	}
+	const modalStore = getModalStore();
+
+	const modal: ModalSettings = {
+		type: 'component',
+		component: 'modalTable',
+		title: 'Din resa',
+		body: ''
+	};
 
 	export let data: PageData;
+
+	const formatCost = (cost: number) => {
+		return `${cost} kr`.replace('.', ',');
+	};
 
 	const formattedTrips: TripFormatted[] = data.trips.map((trip: Trip) => {
 		const timeDifference = calculateTimeDifference(trip.start_time, trip.end_time);
 		const formattedTimeDifference = formatMilliseconds(timeDifference);
 		const formattedStartTime = formatDateReadable(trip.start_time);
 		const formattedEndTime = formatDateReadable(trip.end_time);
-		const formattedTotalCost = `${trip.total_cost} kr`.replace('.', ',');
+		const formattedTotalCost = formatCost(trip.total_cost);
+		const formattedStartCost = formatCost(trip.start_cost);
+		const formattedVarCost = formatCost(trip.var_cost);
+		const formattedParkingCost = formatCost(trip.park_cost);
+
+		const formattedStartPos = `Lat. ${trip.start_pos[1]}, Lon. ${trip.start_pos[0]}`;
+		const formattedEndPos = `Lat. ${trip.end_pos[1]}, Lon. ${trip.end_pos[0]}`;
 
 		return {
 			...trip,
@@ -33,7 +49,12 @@
 			end_time_formatted: formattedEndTime,
 			time_difference_milliseconds: timeDifference,
 			time_difference_formatted: formattedTimeDifference,
-			total_cost_formatted: formattedTotalCost
+			total_cost_formatted: formattedTotalCost,
+			start_cost_formatted: formattedStartCost,
+			var_cost_formatted: formattedVarCost,
+			park_cost_formatted: formattedParkingCost,
+			start_pos_formatted: formattedStartPos,
+			end_pos_formatted: formattedEndPos
 		};
 	});
 
@@ -64,19 +85,37 @@
 	// These are not visible in the UI at first, but are returned when a row is selected
 	$: sourceBodyMetaSlicedMapped = tableMapperValues(sourceBodySliced, [
 		'id',
-		'user_id',
 		'bike_id',
-		'start_time',
-		'end_time',
-		'park_cost',
-		'var_cost',
-		'start_cost',
-		'total_cost',
-		'start_pos',
-		'end_pos'
+		'start_time_formatted',
+		'end_time_formatted',
+		'total_cost_formatted',
+		'start_cost_formatted',
+		'var_cost_formatted',
+		'park_cost_formatted',
+		'start_pos_formatted',
+		'end_pos_formatted'
 	]);
 
-	let sourceHeaders: string[] = ['Datum', 'Tid', 'Pris']; // Table headers
+	let sourceHeaders: string[] = ['Startdatum', 'Resetid', 'Total kostnad']; // Table headers
+
+	let sourceMetaHeaders: string[] = [
+		'Resenr',
+		'Cykelnr',
+		'Startdatum',
+		'Slutdatum',
+		'Total kostnad',
+		'(varav startavgift)',
+		'(varav tidsavgift)',
+		'(varav parkering)',
+		'Startposition',
+		'Slutposition'
+	]; // Table headers for meta data used in modal
+
+	function onRowSelect(event: CustomEvent): void {
+		let modalData = { headers: sourceMetaHeaders, values: event.detail };
+		modal.meta = modalData;
+		modalStore.trigger(modal);
+	}
 
 	// sum of visible trips total_cost
 	$: totalCost = sourceBodySliced.reduce(
