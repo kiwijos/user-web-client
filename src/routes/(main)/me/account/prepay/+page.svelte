@@ -6,6 +6,7 @@
 	import Fa from 'svelte-fa';
 	import { cardOptions } from '$lib/utils/cardOptions';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -15,6 +16,12 @@
 		message: 'Överföringen lyckades!',
 		timeout: 10000,
 		background: 'variant-filled-primary',
+		action: {
+			label: 'Visa saldo',
+			response: () => {
+				goto('/me/account');
+			}
+		}
 	};
 
 	export let form: ActionData;
