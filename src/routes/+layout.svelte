@@ -21,7 +21,11 @@
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
 <Modal components={modalRegistry} />
-<Toast />
+<Toast
+	color="text-white dark:text-surface-50"
+	buttonAction="btn bg-white dark:bg-surface-50 text-surface-700"
+	buttonDismiss="btn-icon btn-icon-sm bg-white dark:bg-surface-50 text-surface-700"
+/>
 <slot />
 <div class="fixed bottom-0 right-0 z-50 p-4">
 	<LightSwitch />
