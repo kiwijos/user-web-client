@@ -36,7 +36,7 @@
 					class="text-white dark:text-primary-200 text-center text-sm text-shadow text-shadow-sm shadow-primary-900 col-span-3 row-start-3"
 				>
 					{data.card.card_nr
-						? `${data.card.card_nr.substring(0, 4)} XXXX XXXX XXXX`
+						? `${data.card.card_nr.substring(0, 4)} •••• •••• ••••`
 						: 'Kortnummer saknas'}
 				</p>
 			</a>

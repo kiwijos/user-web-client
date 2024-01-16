@@ -38,7 +38,9 @@
 		<div class="input-group input-group-divider grid-cols-[1fr_auto] rounded-container-token">
 			<input
 				type="text"
-				placeholder={data?.card?.card_nr ? data.card.card_nr : 'Konto saknas'}
+				placeholder={data?.card?.card_nr
+					? `${data.card.card_nr.substring(0, 4)} •••• •••• ••••`
+					: 'Konto saknas'}
 				readonly
 				title="Sparat konto"
 			/>
