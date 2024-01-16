@@ -37,6 +37,7 @@
 	$: if (form?.success) {
 		toastStore.trigger(toastSettings);
 	}
+	let hasSetupPaymentMethod: boolean = typeof data?.card?.card_type === 'number';
 </script>
 
 <form action="?/prepay" method="POST" use:enhance class="flex flex-col space-y-4 max-w-xl">
@@ -75,6 +76,7 @@
 			type="number"
 			placeholder="Ange belopp"
 			name="amount"
+			disabled={!hasSetupPaymentMethod}
 		/>
 		<p class="text-error-400 text-xs">&nbsp; {amountError || ''}</p>
 	</label>
