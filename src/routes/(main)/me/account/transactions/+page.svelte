@@ -9,10 +9,6 @@
 	import type { Transaction } from '$lib/types/Transaction';
 	import type { TransactionFormatted } from '$lib/types/TransactionFormatted';
 
-	function onRowSelect(event: CustomEvent): void {
-		console.log(event.detail);
-	}
-
 	export let data: PageData;
 
 	const formattedTransactions: TransactionFormatted[] = data.transactions.map(
@@ -52,13 +48,7 @@
 		'amount_formatted'
 	]);
 
-	// These are not visible in the UI at first, but are returned when a row is selected
-	$: sourceBodyMetaSlicedMapped = tableMapperValues(sourceBodySliced, [
-		'id',
-		'user_id',
-		'ref',
-		'amount'
-	]);
+	let sourceHeaders: string[] = ['Datum', 'Referens', 'Belopp']; // Table headers
 
 	let sourceHeaders: string[] = ['Datum', 'Ref', 'Pris']; // Table headers
 
@@ -72,7 +62,6 @@
 	$: table = {
 		head: sourceHeaders,
 		body: sourceBodySlicedMapped,
-		meta: sourceBodyMetaSlicedMapped,
 		foot: [
 			`<code class="code">${numberOfTransactions} resor</code>`,
 			'',
@@ -93,13 +82,6 @@
 		class="!flex-row gap-2 !space-x-0 !space-y-0 [&>label]:w-fit"
 	/>
 	<div class="overflow-x-scroll">
-		<Table
-			source={table}
-			interactive={true}
-			on:selected={onRowSelect}
-			text="text-xs"
-			regionHeadCell="uppercase"
-			regionFootCell="lowercase"
-		/>
+		<Table source={table} text="text-xs" regionHeadCell="uppercase" regionFootCell="lowercase" />
 	</div>
 </div>
