@@ -37,7 +37,16 @@
 	$: if (form?.success) {
 		toastStore.trigger(toastSettings);
 	}
+
 	let hasSetupPaymentMethod: boolean = typeof data?.card?.card_type === 'number';
+
+	let canSubmit: boolean = false;
+
+	const onValueChange = (e: Event) => {
+		const value = Number((e.target as HTMLInputElement).value);
+		if (value > 0) canSubmit = true;
+		else canSubmit = false;
+	};
 </script>
 
 <form action="?/prepay" method="POST" use:enhance class="flex flex-col space-y-4 max-w-xl">
@@ -76,11 +85,15 @@
 			type="number"
 			placeholder="Ange belopp"
 			name="amount"
+			on:change={onValueChange}
 			disabled={!hasSetupPaymentMethod}
 		/>
 		<p class="text-error-400 text-xs">&nbsp; {amountError || ''}</p>
 	</label>
-	<button class="max-w-fit btn bg-primary-500 text-white" title="Överför" type="submit"
-		>Överför</button
+	<button
+		class="max-w-fit btn bg-primary-500 text-white"
+		disabled={!hasSetupPaymentMethod || !canSubmit}
+		title="Överför"
+		type="submit">Överför</button
 	>
 </form>
