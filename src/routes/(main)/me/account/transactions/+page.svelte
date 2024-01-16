@@ -50,8 +50,6 @@
 
 	let sourceHeaders: string[] = ['Datum', 'Referens', 'Belopp']; // Table headers
 
-	let sourceHeaders: string[] = ['Datum', 'Ref', 'Pris']; // Table headers
-
 	$: totalCost = sourceBodySliced.reduce(
 		(acc: number, transaction: TransactionFormatted) => acc + transaction.amount,
 		0
