@@ -14,7 +14,7 @@
 	const toastSettings: ToastSettings = {
 		message: 'Din kortuppgifter har uppdaterats',
 		timeout: 10000,
-		background: 'variant-ghost-primary'
+		background: 'variant-filled-primary'
 	};
 
 	export let form: ActionData;

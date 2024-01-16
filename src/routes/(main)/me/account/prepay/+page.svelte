@@ -14,7 +14,7 @@
 	const toastSettings: ToastSettings = {
 		message: 'Överföringen lyckades!',
 		timeout: 10000,
-		background: 'variant-ghost-primary'
+		background: 'variant-filled-primary',
 	};
 
 	export let form: ActionData;
