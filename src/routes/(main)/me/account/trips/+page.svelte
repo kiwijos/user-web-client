@@ -97,7 +97,7 @@
 		foot: [
 			`<code class="code">${numberOfTrips} resor</code>`,
 			`<code class="code">${formatMilliseconds(totalTime)}</code>`,
-			`<code class="code">${totalCost} kr</code>`
+			`<code class="code">${totalCost.toFixed(2)} kr</code>`
 		]
 	};
 </script>
