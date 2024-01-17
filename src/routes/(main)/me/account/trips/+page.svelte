@@ -27,7 +27,7 @@
 	export let data: PageData;
 
 	const formatCost = (cost: number) => {
-		return `${cost} kr`.replace('.', ',');
+		return `${cost.toFixed(2)} kr`.replace('.', ',');
 	};
 
 	const formattedTrips: TripFormatted[] = data.trips.map((trip: Trip) => {
