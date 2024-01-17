@@ -9,6 +9,8 @@
 
 	export let data: PageData;
 
+	const isBalancePositive = typeof data?.balance === 'number' && data.balance >= 0;
+
 	const [balance, balanceDecimals] =
 		typeof data?.balance === 'number' ? data.balance.toFixed(2).split('.') : ['0', '00'];
 </script>
@@ -42,11 +44,21 @@
 			</a>
 			<a
 				href="/me/account/prepay"
-				class="card card-hover h-28 variant-soft-success grow rounded-container-token flex items-center justify-center p-4 text-center text-surface-700 dark:text-surface-300 text-2xl font-bold"
+				class="card card-hover h-28 {isBalancePositive
+					? 'variant-soft-success'
+					: 'variant-soft-error'} grow rounded-container-token flex items-center justify-center p-4 text-center text-surface-700 dark:text-surface-300 text-2xl font-bold"
 			>
-				<p class="text-success-900 dark:text-success-700 font-extrabold">
+				<p
+					class="{isBalancePositive
+						? 'text-success-900 dark:text-success-700'
+						: 'text-error-900 dark:text-error-700'} font-extrabold"
+				>
 					<span class="text-4xl">{balance}</span>,<span class="text-2lg">{balanceDecimals}</span
-					><span class="ml-2 text-4xl text-success-400 dark:text-success-900">kr</span>
+					><span
+						class="ml-2 text-4xl {isBalancePositive
+							? 'text-success-400 dark:text-success-900'
+							: 'text-error-400 dark:text-error-900'}">kr</span
+					>
 				</p>
 			</a>
 		</div>
