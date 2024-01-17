@@ -1,5 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
-import { error } from '@sveltejs/kit';
+import { redirect, error } from '@sveltejs/kit';
 import { jwtDecode } from 'jwt-decode';
 import type { CustomJwtPayload } from './lib/types/CustomJwtPayload';
 import type { HandleFetch } from '@sveltejs/kit';
@@ -66,7 +66,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.user = null;
 		event.cookies.delete('session', { path: '/' });
 
-		throw error(403, 'Sessionen har gått ut. Logga in igen.');
+		throw redirect(302, '/login');
 	}
 
 	// Valid token, presumably with some valid user data in it
