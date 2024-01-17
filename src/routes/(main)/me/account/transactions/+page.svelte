@@ -61,7 +61,7 @@
 		head: sourceHeaders,
 		body: sourceBodySlicedMapped,
 		foot: [
-			`<code class="code">${numberOfTransactions} resor</code>`,
+			`<code class="code">${numberOfTransactions} betalningar</code>`,
 			'',
 			`<code class="code">${totalCost} kr</code>`
 		]
@@ -73,7 +73,7 @@
 		bind:settings={paginationSettings}
 		showFirstLastButtons={false}
 		showPreviousNextButtons={true}
-		amountText="Resor"
+		amountText="Betalningar"
 		separatorText="av"
 		select="text-xs sm:text-sm dark:bg-surface-800 rounded-lg dark:border-surface-800"
 		controlVariant="text-xs sm:text-sm dark:bg-surface-800"
