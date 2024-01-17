@@ -106,6 +106,7 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 	try {
 		restServerResponse = await fetch(`${PUBLIC_REST_API_URL}/login/user`, {
 			method: 'POST',
+			cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
