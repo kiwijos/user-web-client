@@ -30,21 +30,25 @@
 		return `${cost.toFixed(2)} kr`.replace('.', ',');
 	};
 
+	const dateNow = String(new Date());
+
 	const formattedTrips: TripFormatted[] = data.trips.map((trip: Trip) => {
-		const timeDifference = calculateTimeDifference(trip.start_time, trip.end_time);
+		const timeDifference = calculateTimeDifference(trip.start_time, trip.end_time || dateNow);
 		const formattedTimeDifference = formatMilliseconds(timeDifference);
 		const formattedStartTime = formatDateReadable(trip.start_time);
-		const formattedEndTime = formatDateReadable(trip.end_time);
-		const formattedTotalCost = formatCost(trip.total_cost);
-		const formattedStartCost = formatCost(trip.start_cost);
-		const formattedVarCost = formatCost(trip.var_cost);
-		const formattedParkingCost = formatCost(trip.park_cost);
+		const formattedEndTime = trip.end_time ? formatDateReadable(trip.end_time) : '(ej avslutad)';
+		const formattedTotalCost = trip.total_cost ? formatCost(trip.total_cost) : '(ej avslutad)';
+		const formattedStartCost = trip.start_cost ? formatCost(trip.start_cost) : '(ej avslutad)';
+		const formattedVarCost = trip.var_cost ? formatCost(trip.var_cost) : '(ej avslutad)';
+		const formattedParkingCost = trip.park_cost ? formatCost(trip.park_cost) : '(ej avslutad)';
 
 		const formattedStartPos = `Lat. ${trip.start_pos[1]}, Lon. ${trip.start_pos[0]}`;
-		const formattedEndPos = `Lat. ${trip.end_pos[1]}, Lon. ${trip.end_pos[0]}`;
+		const formattedEndPos =
+			trip.end_pos !== null ? `Lat. ${trip.end_pos[1]}, Lon. ${trip.end_pos[0]}` : '(ej avslutad)';
 
 		return {
 			...trip,
+			total_cost: trip.total_cost || 0,
 			start_time_formatted: formattedStartTime,
 			end_time_formatted: formattedEndTime,
 			time_difference_milliseconds: timeDifference,
