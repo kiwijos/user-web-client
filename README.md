@@ -8,7 +8,7 @@ Welcome to the user web client for our e-bike renting system, part of our exhila
 
 ### App Running Live
 
- Get a feel for the apps features, functionality, and user interface (we recommend visiting the site on your phone):
+ Get a feel for the apps features, functionality, and user interface:
 
 - **Live Demo**: Visit [Lenticode](https://vteam-user.lenticode.com/) to see the application live.
 
